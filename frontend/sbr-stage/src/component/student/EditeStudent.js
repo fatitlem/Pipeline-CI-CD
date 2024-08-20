@@ -88,12 +88,12 @@ const EditeStudent = () => {
                 <div className="row mb-5">
                     <div className="col-sm-2">
                         <button type="submit" className="btn btn-outline-success btn-lg">
-                            Save
+                            Sauvegarde
                         </button>
                     </div>
                     <div className="col-sm-2">
                         <Link to={"/view-students"} className="btn btn-outline-warning btn-lg">
-                            Cancel
+                            Annule
                         </Link>
                     </div>
                 </div>
