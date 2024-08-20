@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE_BACKEND = 'fatimazahraerhmaritlemcani132/pfa-ci-cd-backend:v1.0'
-        DOCKER_IMAGE_FRONTEND = ' fatimazahraerhmaritlemcani132/frontend-image:v1.0'
+        DOCKER_IMAGE_FRONTEND = 'fatimazahraerhmaritlemcani132/frontend-image:v1.0'
         DOCKER_IMAGE_DB = 'fatimazahraerhmaritlemcani132/mysql:v1.0'
     }
 
@@ -37,8 +37,7 @@ pipeline {
             steps {
                 script {
                     // Ensure the correct build context
-
-                     sh "docker pull ${env.DOCKER_IMAGE_FRONTEND} "
+                    sh "docker pull ${env.DOCKER_IMAGE_FRONTEND}"
                 }
             }
         }
@@ -46,12 +45,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-
-                    sh 'docker compose up --build '
+                    sh 'docker compose up --build'
                 }
             }
         }
-
+    }
 
     post {
         always {
