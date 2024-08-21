@@ -13,47 +13,72 @@ pipeline {
                 // Checkout the main branch from GitHub
                 git branch: 'main',
                     url: 'https://github.com/fatitlem/Pipeline-CI-CD.git',
-                    credentialsId: 'gitcred'
+                    credentialsId: 'cred'
             }
         }
 
-        stage('Pull Database Image') {
+        stage('Pull Docker Images') {
             steps {
                 script {
+                    // Pull the latest Docker images
+                    sh "docker pull ${env.DOCKER_IMAGE_FRONTEND}"
+                    sh "docker pull ${env.DOCKER_IMAGE_BACKEND}"
                     sh "docker pull ${env.DOCKER_IMAGE_DB}"
                 }
             }
         }
 
-        stage('Pull Backend Image') {
+        stage('Clean Up Old Containers') {
             steps {
                 script {
-                    sh "docker pull ${env.DOCKER_IMAGE_BACKEND}"
+                    // Stop and remove existing containers if they are running
+                    sh 'docker stop frontend-container || true'
+                    sh 'docker rm frontend-container || true'
+
+                    sh 'docker stop backend-container || true'
+                    sh 'docker rm backend-container || true'
+
+                    sh 'docker stop db-container || true'
+                    sh 'docker rm db-container || true'
                 }
             }
         }
 
-        stage('Build Frontend') {
+        stage('Deploy Database') {
+                steps {
+                    script {
+                        // Run the latest database Docker container
+                        sh "docker run -d --name db-container ${env.DOCKER_IMAGE_DB}"
+                    }
+                }
+            }
+
+        stage('Deploy Frontend') {
             steps {
                 script {
-                    // Ensure the correct build context
-                    sh "docker pull ${env.DOCKER_IMAGE_FRONTEND}"
+                    // Run the latest frontend Docker container
+                    sh "docker run -d --name frontend-container -p 80:80 ${env.DOCKER_IMAGE_FRONTEND}"
                 }
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy Backend') {
             steps {
                 script {
-                    sh 'docker compose  up -d --build'
+                    // Run the latest backend Docker container
+                    sh "docker run -d --name backend-container ${env.DOCKER_IMAGE_BACKEND}"
                 }
             }
         }
+
+
     }
 
     post {
         always {
             cleanWs()
+            }
         }
-    }
-}
+     }
+
+
