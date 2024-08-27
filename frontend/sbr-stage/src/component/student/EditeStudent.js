@@ -28,7 +28,7 @@ const EditeStudent = () => {
 
     const updateStudent = async (e) => {
         e.preventDefault(); // Prevent default form submission
-        await axios.put(`http://13.38.88.141:9192/students/update/${id}`, student);
+        await axios.put(`http://13.39.160.211:9192/students/update/${id}`, student);
         // Add any logic for handling success or failure of the API call
         navigate("/view-students");
     };
