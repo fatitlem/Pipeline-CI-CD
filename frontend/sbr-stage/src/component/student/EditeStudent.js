@@ -16,7 +16,7 @@ const EditeStudent = () => {
 
     useEffect(() => {
         const loadStudent = async () => {
-            const result = await axios.get(`http://13.38.88.141/:9192/students/student/${id}`);
+            const result = await axios.get(`http://13.38.88.141:9192/students/student/${id}`);
             setStudent(result.data);
         };
         loadStudent();
@@ -28,7 +28,7 @@ const EditeStudent = () => {
 
     const updateStudent = async (e) => {
         e.preventDefault(); // Prevent default form submission
-        await axios.put(`http://13.38.88.141//students/update/${id}`, student);
+        await axios.put(`http://13.38.88.141:9192/students/update/${id}`, student);
         // Add any logic for handling success or failure of the API call
         navigate("/view-students");
     };

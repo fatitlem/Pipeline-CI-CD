@@ -15,7 +15,7 @@ const StudentProfile = () => {
 
 	const loadStudent = useCallback(async () => {
 		try {
-			const result = await axios.get(`http://13.38.88.141/:9192/students/student/${id}`);
+			const result = await axios.get(`http://13.38.88.141:9192/students/student/${id}`);
 			setStudent(result.data);
 			setLoading(false);
 		} catch (error) {
