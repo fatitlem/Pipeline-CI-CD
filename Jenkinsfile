@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE_BACKEND = 'fatimazahraerhmaritlemcani132/my-spring-boot-app:v1.0'
-        DOCKER_IMAGE_FRONTEND = 'fatimazahraerhmaritlemcani132/pfa-ci-cd-frontend:v1.0'
+        DOCKER_IMAGE_FRONTEND = 'fatimazahraerhmaritlemcani132/my-front:v1.0'
         DOCKER_IMAGE_DB = 'fatimazahraerhmaritlemcani132/mysql:v1.0'
     }
 
