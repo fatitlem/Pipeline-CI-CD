@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE_BACKEND = 'fatimazahraerhmaritlemcani132/pfa-ci-cd-backend:v1.0'
-        DOCKER_IMAGE_FRONTEND = ' fatimazahraerhmaritlemcani132/frontend-image:v1.0'
+        DOCKER_IMAGE_FRONTEND = 'fatimazahraerhmaritlemcani132/pfa-ci-cd-frontend:v1.0'
         DOCKER_IMAGE_DB = 'fatimazahraerhmaritlemcani132/mysql:v1.0'
     }
 
@@ -13,7 +13,7 @@ pipeline {
                 // Checkout the main branch from GitHub
                 git branch: 'main',
                     url: 'https://github.com/fatitlem/Pipeline-CI-CD.git',
-                    credentialsId: ''
+                    credentialsId: '' // Ajoute ton credentialsId ici si nécessaire
             }
         }
 
@@ -36,9 +36,9 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 script {
-                    // Ensure the correct build context
-
-                     sh "docker pull ${env.DOCKER_IMAGE_FRONTEND} "
+                    // Assurer le bon contexte pour le build frontend
+                    // Si tu construis l'image frontend à partir du code source, utilise un Dockerfile approprié
+                    sh "docker build -t ${env.DOCKER_IMAGE_FRONTEND} ./frontend-directory"
                 }
             }
         }
@@ -46,9 +46,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-
-                    sh "docker-compose up --build"
-
+                    sh "docker-compose up -d --build"
                 }
             }
         }
