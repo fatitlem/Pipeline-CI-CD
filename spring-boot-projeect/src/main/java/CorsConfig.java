@@ -7,7 +7,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*") // Autorise les requêtes uniquement depuis ces origines
+                .allowedOrigins( "http://13.38.88.141:3000") // Autorise les requêtes uniquement depuis ces origines
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // Autorise les méthodes HTTP spécifiées
                 .allowedHeaders("*"); // Autorise tous les en-têtes
     }
