@@ -10,7 +10,7 @@ const StudentsView = () => {
         loadStudents();
     },[]);
     const loadStudents =async()=>{
-        const result=await axios.get("http://localhost:9192/students",{
+        const result=await axios.get("http://13.38.88.141/:9192/students",{
 
             validateStatus:()=>{
                 return true;
@@ -22,7 +22,7 @@ const StudentsView = () => {
        
     };
     const handleDelete =async(id)=>{
-        await axios.delete(`http://localhost:9192/students/delete/${id}`)
+        await axios.delete(`http://13.38.88.141/:9192/students/delete/${id}`)
         loadStudents();
     }
 

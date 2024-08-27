@@ -18,7 +18,7 @@ const AddStudent = () => {
 
   const saveStudent = async (e) => {
     e.preventDefault(); // Prevent default form submission
-    await axios.post("http://localhost:9192/students", student);
+    await axios.post("http://13.38.88.141/:9192/students", student);
     // Add any logic for handling success or failure of the API call
     navigate("/view-students");
   };
