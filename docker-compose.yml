@@ -19,7 +19,7 @@ services:
       - spring-mysql
 
   backend:
-    image: fatimazahraerhmaritlemcani132/my-spring-boot-app:v1.0
+    image: fatimazahraerhmaritlemcani132/backend-pi:v1.0
     depends_on:
       db:
         condition: service_healthy
@@ -36,7 +36,7 @@ services:
       - react-spring
 
   frontend:
-    image:  fatimazahraerhmaritlemcani132/my-front:v1.0
+    image:  fatimazahraerhmaritlemcani132/frontend-pi:v1.0
     ports:
       - "3000:3000"
     depends_on:

@@ -16,7 +16,7 @@ const EditeStudent = () => {
 
     useEffect(() => {
         const loadStudent = async () => {
-            const result = await axios.get(`http://13.38.88.141:9192/students/student/${id}`);
+            const result = await axios.get(`http://13.39.160.211:9192/students/student/${id}`);
             setStudent(result.data);
         };
         loadStudent();

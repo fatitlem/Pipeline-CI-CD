@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE_BACKEND = 'fatimazahraerhmaritlemcani132/my-spring-boot-app:v1.0'
-        DOCKER_IMAGE_FRONTEND = 'fatimazahraerhmaritlemcani132/my-front:v1.0'
+        DOCKER_IMAGE_BACKEND = 'fatimazahraerhmaritlemcani132/backend-pi:v1.0'
+        DOCKER_IMAGE_FRONTEND = 'fatimazahraerhmaritlemcani132/frontend-pi:v1.0'
         DOCKER_IMAGE_DB = 'fatimazahraerhmaritlemcani132/mysql:v1.0'
     }
 
