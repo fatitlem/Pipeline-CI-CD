@@ -19,7 +19,7 @@ services:
       - spring-mysql
 
   backend:
-    image: fatimazahraerhmaritlemcani132/pfa-ci-cd-backend:v1.0
+    image: fatimazahraerhmaritlemcani132/my-spring-boot-app:v1.0
     depends_on:
       db:
         condition: service_healthy
