@@ -13,7 +13,7 @@ pipeline {
                 // Checkout the main branch from GitHub
                 git branch: 'main',
                     url: 'https://github.com/fatitlem/Pipeline-CI-CD.git',
-                    credentialsId: '' // Ajoute ton credentialsId ici si nécessaire
+                    credentialsId: 'gitcred' // Ajoute ton credentialsId ici si nécessaire
             }
         }
 
@@ -33,12 +33,10 @@ pipeline {
             }
         }
 
-        stage('Build Frontend') {
+        stage('Pull Frontend') {
             steps {
                 script {
-                    // Assurer le bon contexte pour le build frontend
-                    // Si tu construis l'image frontend à partir du code source, utilise un Dockerfile approprié
-                    sh "docker build -t ${env.DOCKER_IMAGE_FRONTEND} ./frontend-directory"
+                    sh "docker pull ${env.DOCKER_IMAGE_FRONTEND}"
                 }
             }
         }
