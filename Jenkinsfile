@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE_BACKEND = 'fatimazahraerhmaritlemcani132/backend-pip:v1.0'
-        DOCKER_IMAGE_FRONTEND = 'fatimazahraerhmaritlemcani132/frontend-pip:v1.0'
+        DOCKER_IMAGE_BACKEND = ' fatimazahraerhmaritlemcani132/backend:latest'
+        DOCKER_IMAGE_FRONTEND = ' fatimazahraerhmaritlemcani132/frontend:latest'
         DOCKER_IMAGE_DB = 'fatimazahraerhmaritlemcani132/mysql:v1.0'
     }
 
